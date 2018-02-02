@@ -4,7 +4,7 @@
 #
 Name     : multimon-ng
 Version  : 1.1.4
-Release  : 3
+Release  : 4
 URL      : https://github.com/EliasOenal/multimon-ng/archive/1.1.4.tar.gz
 Source0  : https://github.com/EliasOenal/multimon-ng/archive/1.1.4.tar.gz
 Summary  : No detailed summary available
