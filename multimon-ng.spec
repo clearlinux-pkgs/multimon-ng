@@ -4,7 +4,7 @@
 #
 Name     : multimon-ng
 Version  : 1.1.8
-Release  : 9
+Release  : 10
 URL      : https://github.com/EliasOenal/multimon-ng/archive/1.1.8/multimon-ng-1.1.8.tar.gz
 Source0  : https://github.com/EliasOenal/multimon-ng/archive/1.1.8/multimon-ng-1.1.8.tar.gz
 Summary  : No detailed summary available
@@ -42,29 +42,30 @@ license components for the multimon-ng package.
 
 %prep
 %setup -q -n multimon-ng-1.1.8
+cd %{_builddir}/multimon-ng-1.1.8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563467666
+export SOURCE_DATE_EPOCH=1604359937
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1563467666
+export SOURCE_DATE_EPOCH=1604359937
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/multimon-ng
-cp COPYING %{buildroot}/usr/share/package-licenses/multimon-ng/COPYING
+cp %{_builddir}/multimon-ng-1.1.8/COPYING %{buildroot}/usr/share/package-licenses/multimon-ng/4cc77b90af91e615a64ae04893fdffa7939db84c
 pushd clr-build
 %make_install
 popd
@@ -78,4 +79,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/multimon-ng/COPYING
+/usr/share/package-licenses/multimon-ng/4cc77b90af91e615a64ae04893fdffa7939db84c
